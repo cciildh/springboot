@@ -1,5 +1,6 @@
 package com.ldh.springbootmybatis;
 
+
 import org.junit.Test;
 
 /**
@@ -11,4 +12,6 @@ public class dometests {
     public void dometest() {
         domeTest.showTest("ldh");
     }
+
+    
 }

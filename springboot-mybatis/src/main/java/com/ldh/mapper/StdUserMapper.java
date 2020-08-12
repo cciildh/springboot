@@ -12,5 +12,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface StdUserMapper extends MyBatisBaseDao<StdUser, Integer> {
     /** 查询所有 */
-    List<StdUser> GetUsers();
+    List<StdUser> selAll();
 }

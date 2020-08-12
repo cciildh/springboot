@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <form th:action="@{/user/addemp}" method="POST">
+        用户姓名：<input type="text" name="name" /><br />
+        用户年龄：<input type="text" name="age" /><br />
+        用户性别：<input type="text" name="sexname" /><br />
+        用户地址：<input type="text" name="address" /><br />
+        用户联系电话：<input type="text" name="phone" /><br />
+        <p></p>
+        <input type="submit" value="提交"/>
+    </form>
+
+</body>
+
+</html>
