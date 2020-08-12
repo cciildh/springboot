@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <h3>Thymeleaf入门 </h3>
+    <h5>th:text="${id}用法：</h5>
+    <p th:text="hello"></p>
+    <p th:text="${msg}"></p>
+    <br />
+    <h5>th:value="${id}用法：</h5>
+    <input type="text" name="userName" th:value="${msg}">
+    <br />
+
+    <h3>Thymeleaf时间用法</h3>
+    <h5>th:text="${#dates.format(id)}用法：</h5>
+
+    <p th:text="${#dates.format(date,'yyy-MM-dd')}"></p>
+    <h5>获取年\月份${#dates.year(date)} 、${#dates.month(date)}: </h5>
+    <p th:text="${#dates.year(date)}"></p>
+
+
+    <h3>Thymeleaf作用域用法</h3>
+    <p th:text="${#httpServletRequest.getAttribute('request')}"></p>
+    <p th:text="${session.session}"></p>
+    <p th:text="${application.context}"></p>
+
+    <h3>Thymeleaf集合用法</h3>
+    <h5>th:each="ls:${list}用法：</h5>
+    <br />
+    <table border="1">
+        <tr th:each="usr:${userlist}">
+            <td th:text=${usr.userId}></td>
+            <td th:text=${usr.userName}></td>
+        </tr>
+    </table>
+</body>
+</html>
