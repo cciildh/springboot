@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.ldh.mapper.StdUserMapper">
+	<resultMap id="BaseResultMap" type="com.ldh.pojo.StdUser">
+		<id column="USER_ID" jdbcType="INTEGER" property="userId" />
+		<result column="USER_NAME" jdbcType="VARCHAR" property="userName" />
+		<result column="USER_PASSWORD" jdbcType="VARCHAR" property="userPassword" />
+		<result column="USER_DATE" jdbcType="TIMESTAMP" property="userDate" />
+		<result column="ID" jdbcType="INTEGER" property="id" />
+	</resultMap>
+	<sql id="Base_Column_List">
+		USER_ID, USER_NAME, USER_PASSWORD, USER_DATE, ID
+	</sql>
+	<select id="selectByPrimaryKey" parameterType="java.lang.Integer"
+		resultMap="BaseResultMap">
+		select
+		<include refid="Base_Column_List" />
+		from STD_USER
+		where USER_ID = #{userId,jdbcType=INTEGER}
+	</select>
+
+	<select id="GetUsers" resultMap="BaseResultMap">
+		select * from STD_USER
+	</select>
+
+	<delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+		delete from STD_USER
+		where USER_ID = #{userId,jdbcType=INTEGER}
+	</delete>
+	<insert id="insert" keyColumn="ID" keyProperty="id"
+		parameterType="com.ldh.pojo.StdUser" useGeneratedKeys="true">
+		insert into STD_USER (USER_ID, USER_NAME, USER_PASSWORD,
+		USER_DATE)
+		values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR},
+		#{userPassword,jdbcType=VARCHAR},
+		#{userDate,jdbcType=TIMESTAMP})
+	</insert>
+	<insert id="insertSelective" keyColumn="ID" keyProperty="id"
+		parameterType="com.ldh.pojo.StdUser" useGeneratedKeys="true">
+		insert into STD_USER
+		<trim prefix="(" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				USER_ID,
+			</if>
+			<if test="userName != null">
+				USER_NAME,
+			</if>
+			<if test="userPassword != null">
+				USER_PASSWORD,
+			</if>
+			<if test="userDate != null">
+				USER_DATE,
+			</if>
+		</trim>
+		<trim prefix="values (" suffix=")" suffixOverrides=",">
+			<if test="userId != null">
+				#{userId,jdbcType=INTEGER},
+			</if>
+			<if test="userName != null">
+				#{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				#{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userDate != null">
+				#{userDate,jdbcType=TIMESTAMP},
+			</if>
+		</trim>
+	</insert>
+	<update id="updateByPrimaryKeySelective" parameterType="com.ldh.pojo.StdUser">
+		update STD_USER
+		<set>
+			<if test="userName != null">
+				USER_NAME = #{userName,jdbcType=VARCHAR},
+			</if>
+			<if test="userPassword != null">
+				USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+			</if>
+			<if test="userDate != null">
+				USER_DATE = #{userDate,jdbcType=TIMESTAMP},
+			</if>
+			<if test="id != null">
+				ID = #{id,jdbcType=INTEGER},
+			</if>
+		</set>
+		where USER_ID = #{userId,jdbcType=INTEGER}
+	</update>
+	<update id="updateByPrimaryKey" parameterType="com.ldh.pojo.StdUser">
+		update STD_USER
+		set USER_NAME = #{userName,jdbcType=VARCHAR},
+		USER_PASSWORD = #{userPassword,jdbcType=VARCHAR},
+		USER_DATE = #{userDate,jdbcType=TIMESTAMP},
+		ID = #{id,jdbcType=INTEGER}
+		where USER_ID = #{userId,jdbcType=INTEGER}
+	</update>
+</mapper>
