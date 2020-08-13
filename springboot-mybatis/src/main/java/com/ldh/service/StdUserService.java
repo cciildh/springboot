@@ -13,5 +13,9 @@ public interface StdUserService {
 
     StdUser selById(Integer userid);
 
+    int insert(StdUser user);
 
+    int updateById(StdUser user);
+
+    int deleteById(Integer userid);
 }

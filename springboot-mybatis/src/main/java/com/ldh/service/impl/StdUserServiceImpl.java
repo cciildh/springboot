@@ -30,6 +30,22 @@ public class StdUserServiceImpl implements StdUserService {
         return stdusermapperimpl.selectByPrimaryKey(userid);
     }
 
+    @Override
+    public int insert(StdUser user) {
+        
+        return stdusermapperimpl.insertSelective(user);
+    }
+
+    @Override
+    public int updateById(StdUser user) {
+        return 0;
+    }
+
+    @Override
+    public int deleteById(Integer userid) {
+        return 0;
+    }
+
   
 
 }

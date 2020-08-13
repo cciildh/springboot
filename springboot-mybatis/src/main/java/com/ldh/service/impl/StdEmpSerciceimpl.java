@@ -21,7 +21,7 @@ public class StdEmpSerciceimpl implements StdEmpSercice {
 
     @Autowired
     private StdEmpMapper empmapperimpl;
-
+    @Autowired
     private StdUserMapper usermapperimpl;
 
     @Override
@@ -29,25 +29,24 @@ public class StdEmpSerciceimpl implements StdEmpSercice {
         return empmapperimpl.selectByPrimaryKey(id);
     }
 
-    @Transactional  //表示该方法将被springboot事务管理器所管理
+    @Transactional(rollbackFor=Exception.class) // 表示该方法将被springboot事务管理器所管理,出现异常回滚
     @Override
     public int insert(StdEmp emp) {
         Date date = new Date();
         SimpleDateFormat dFormat = new SimpleDateFormat("MMddHHmmss");
         int id = Integer.valueOf(dFormat.format(date));
-        System.out.println(id);
         emp.setId(id);
-        int rows = empmapperimpl.insert(emp);
+        empmapperimpl.insert(emp);
 
-        System.out.println(rows);
 
-        // StdUser user = new StdUser();
-        // user.setId(emp.getId());
-        // user.setUserId(id);
-        // user.setUserName(emp.getName());
-        // user.setUserPassword("123456");
-        // user.setUserDate(date);
-        // usermapperimpl.insert(user);
+        StdUser user = new StdUser();
+        user.setId(emp.getId());
+        user.setUserId(id);
+        user.setUserName(emp.getName());
+        user.setUserPassword("123456");
+        user.setUserDate(date);
+        int rows = usermapperimpl.insert(user);
+
         return rows;
     }
 

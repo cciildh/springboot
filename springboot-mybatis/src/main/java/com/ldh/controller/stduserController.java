@@ -48,13 +48,18 @@ public class stduserController {
     @RequestMapping("/addemp")
     @ResponseBody
     public JsonUtils addemp(StdEmp emp) {
-        System.out.println(emp.toString());
-        int rows = empSerciceimpl.insert(emp);
-        if (rows > 0) {
-            return JsonUtils.ok();
-        } else {
-            return JsonUtils.errorMsg("新增人员失败");
+        try {
+            System.out.println(emp.toString());
+            int rows = empSerciceimpl.insert(emp);
+            if (rows > 0) {
+                return JsonUtils.ok();
+            } else {
+                return JsonUtils.errorMsg("新增人员失败");
+            }
+        } catch (Exception e) {
+            return JsonUtils.errorMsg(e.getMessage());
         }
+       
 
     }
 }
