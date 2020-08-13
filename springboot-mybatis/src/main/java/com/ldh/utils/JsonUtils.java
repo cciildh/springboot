@@ -1,10 +1,15 @@
 package com.ldh.utils;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JavaType;
 import com.fasterxml.jackson.databind.ObjectMapper;
+
+import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 
 /**
  * JsonUtils
@@ -72,19 +77,18 @@ public class JsonUtils {
     public JsonUtils(Object data) {
         this.status = 200;
         this.msg = "OK";
-        this.data = objectToJson(data);
+        this.data = data;
     }
 
     /**
-	 * 成功调用不需要返回json
-	 * 
-	 * @return
-	 */
-	public static JsonUtils ok() {
-		return new JsonUtils(null);
-	}
+     * 成功调用不需要返回json
+     * 
+     * @return
+     */
+    public static JsonUtils ok() {
+        return new JsonUtils(null);
+    }
 
-    
     /**
      * 成功调用
      * 
@@ -167,5 +171,58 @@ public class JsonUtils {
         }
 
         return null;
+    }
+
+    /**
+     * <h6>功能:验证参数信息是否有效</h6>
+     * 
+     * @param bindingResult
+     * @return
+     */
+    private static String myValidate(BindingResult bindingResult) {
+        StringBuffer sbf = new StringBuffer();
+        if (bindingResult.hasErrors()) {
+
+            // 获取错误字段信息集合
+            List<FieldError> fieldErrorList = bindingResult.getFieldErrors();
+
+            // 使用TreeSet是为了让输出的内容有序输出(默认验证的顺序是随机的)
+            Set<String> errorInfoSet = new TreeSet<String>();
+            for (FieldError fieldError : fieldErrorList) {
+                // 遍历错误字段信息
+                errorInfoSet.add(fieldError.getDefaultMessage());
+                // LOG.debug("[{}.{}]{}", fieldError.getObjectName() , fieldError.getField(),
+                // fieldError.getDefaultMessage());
+            }
+
+            for (String errorInfo : errorInfoSet) {
+                sbf.append(errorInfo);
+                sbf.append(",");
+            }
+
+        }
+
+        return sbf.substring(0, sbf.length() - 1);
+    }
+
+    /**
+     * <h6>功能:验证参数信息是否有效</h6>
+     * 
+     * @param bindingResult
+     * @return
+     */
+    public static JsonUtils errorValidate(BindingResult bindingResult) {
+        String mesg = myValidate(bindingResult);
+        return new JsonUtils(1001, mesg, null);
+    }
+
+     /**
+     * <h6>功能:统一验证</h6>
+     * 
+     * @param bindingResult
+     * @return
+     */
+    public static JsonUtils errorValidate(String mesg) {
+        return new JsonUtils(1001, mesg, null);
     }
 }

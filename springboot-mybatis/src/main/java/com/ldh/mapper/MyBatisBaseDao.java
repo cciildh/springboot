@@ -1,13 +1,12 @@
 package com.ldh.mapper;
 
-import java.io.Serializable;
 
 
 /**
  * MyBatisBaseDao
  */
 
-public interface MyBatisBaseDao<Model, PK extends Serializable>  {
+public interface MyBatisBaseDao<Model, PK >  {
 
     int deleteByPrimaryKey(PK id);
 

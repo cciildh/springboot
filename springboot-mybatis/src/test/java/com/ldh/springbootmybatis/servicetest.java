@@ -50,11 +50,11 @@ public class servicetest {
     }
 
     @Test
-    public void empTest() throws Exception {
+    public void empTest() throws Exception  {
         StdEmp emp = new StdEmp();
         // emp.setId(id);
         emp.setAge(18);
-        emp.setName("ldh");
+        // emp.setName("ldh");
         emp.setSexname("男");
         emp.setAddress("湖北广水");
         emp.setPhone("0722-9527001");
