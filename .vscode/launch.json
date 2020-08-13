@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - app",
             "request": "launch",
+            "mainClass": "com.example.app",
+            "projectName": "springboot-exception"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - app",
+            "request": "launch",
             "mainClass": "com.ldh.app",
             "projectName": "springboot-mybatis"
         },
