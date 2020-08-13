@@ -8,18 +8,18 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.TestPropertySource;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
+
 
 /**
  * servicetest 测试service中的方法
+ * RunWith  启动器
+ * SpringJUnit4ClassRunner：让junit与spring环境整合
+ * 
  */
 
-@RunWith(SpringRunner.class)
-@SpringBootTest(classes = app.class)
-@TestPropertySource(locations = "classpath:application.properties")
-@ActiveProfiles("test")
+@RunWith(SpringJUnit4ClassRunner.class)
+@SpringBootTest(classes = {app.class})//加载spingboot启动类
 
 public class servicetest {
 
@@ -28,7 +28,7 @@ public class servicetest {
    private StdEmpSercice serciceimpl;
 
     @Test
-    public void userTest() {
+    public void userTest() throws Exception{
 
         StdEmp emp = new StdEmp();
         // emp.setId(id);

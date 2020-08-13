@@ -11,6 +11,7 @@ import com.ldh.service.StdEmpSercice;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
 /**
  * StdEmpSerciceimpl
@@ -28,6 +29,7 @@ public class StdEmpSerciceimpl implements StdEmpSercice {
         return empmapperimpl.selectByPrimaryKey(id);
     }
 
+    @Transactional  //表示该方法将被springboot事务管理器所管理
     @Override
     public int insert(StdEmp emp) {
         Date date = new Date();
