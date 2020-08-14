@@ -1,22 +1,27 @@
 package com.example.entity;
 
+import javax.validation.constraints.Min;
 import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 
 /**
  * Emp
  */
 public class StdEmp {
 
-    private int empId;
+    @NotNull( message="empId不能为空！")
+    @Min(value=1,message="必须大于1")
+    //注意最好不要使用int 
+    private Integer empId;
     @NotBlank(message="姓名不能为空")
     private String empName;
     @NotBlank(message="性别不能为空")
     private String empSex;
 
     /**
-     * @return the empId
+     * @return the empId    
      */
-    public int getEmpId() {
+    public Integer getEmpId() {
         return empId;
     }
 
@@ -51,7 +56,7 @@ public class StdEmp {
     /**
      * @param empId the empId to set
      */
-    public void setEmpId(int empId) {
+    public void setEmpId(Integer empId) {
         this.empId = empId;
     }
 

@@ -6,11 +6,18 @@
     <title>Document</title>
 </head>
 <body>
-    <form th:action="@{/user/addemp}" method="POST">
+    <form th:action="@{/add}" method="POST">
         用户编码：<input type="text" name="empId" /><br />
         用户姓名：<input type="text" name="empName" /><br />
         用户性别：<input type="text" name="empSex" /><br />
       
+        <p></p>
+        <input type="submit" value="提交"/>
+    </form>
+
+<h4> 测试方法参数校验</h4>
+    <form th:action="@{/getemp}" method="GET">
+        用户编码：<input type="text" name="id" /><br />
         <p></p>
         <input type="submit" value="提交"/>
     </form>

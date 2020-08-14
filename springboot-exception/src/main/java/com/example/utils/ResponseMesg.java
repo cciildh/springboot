@@ -9,7 +9,7 @@ public class ResponseMesg  {
      // 响应业务状态
      private Integer status;
      // 响应消息
-     private String msg;
+     private Object msg;
      // 响应中的数据
      private Object data;
      private String ok; // 不使用
@@ -34,11 +34,11 @@ public class ResponseMesg  {
          this.data = data;
      }
  
-     public String getMsg() {
+     public Object getMsg() {
          return msg;
      }
  
-     public void setMsg(String msg) {
+     public void setMsg(Object msg) {
          this.msg = msg;
      }
  
@@ -52,7 +52,7 @@ public class ResponseMesg  {
      public ResponseMesg() {
      }
  
-     public ResponseMesg(Integer status, String msg, Object data) {
+     public ResponseMesg(Integer status, Object msg, Object data) {
          this.status = status;
          this.msg = msg;
          this.data = data;
@@ -89,8 +89,18 @@ public class ResponseMesg  {
      * @param msg
      * @return
      */
-    public static ResponseMesg errorMsg(String msg) {
+    public static ResponseMesg errorMsg(Object msg) {
         return new ResponseMesg(500, msg, null);
+    }
+
+    /**
+     * 失败调用
+     * @param status 错误编码
+     * @param msg 错误描述
+     * @return
+     */
+    public static ResponseMesg errorMsg(Integer status,Object msg) {
+        return new ResponseMesg(status, msg, null);
     }
 
 }
