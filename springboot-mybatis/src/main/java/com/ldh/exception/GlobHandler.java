@@ -1,4 +1,4 @@
-package com.example.exception;
+package com.ldh.exception;
 
 import java.util.HashMap;
 import java.util.List;
@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
 
-import com.example.utils.ResponseMesg;
+import com.ldh.utils.ResponseMesg;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -34,8 +34,7 @@ public class GlobHandler {
     @ExceptionHandler(RuntimeException.class)
     public Object runtimeException(RuntimeException e, HttpServletRequest req) {
         log.error("运行时异常:", e);
-
-        return handlerException(e, req, "运行时异常:" , 500);
+        return handlerException(e, req, "运行时异常:", 500);
     }
 
     /**
@@ -90,21 +89,22 @@ public class GlobHandler {
         String acceptHeader = req.getHeader("Accept");
         String xRequestedWith = req.getHeader("X-Requested-With");
 
-        // if ((contentTypeHeader != null && contentTypeHeader.contains(" "))
-        // || (acceptHeader != null && acceptHeader.contains("application/json"))
-        // || "XMLHttpRequest".equalsIgnoreCase(xRequestedWith)) {
-        Map<String, String> map = new HashMap<>();
-        map.put(msg, e.getMessage() == null ? e.toString() : e.getMessage());
-        return ResponseMesg.errorMsg(status, map);
+        if ((contentTypeHeader != null && contentTypeHeader.contains("application/json"))
+                || (acceptHeader != null && acceptHeader.contains("application/json"))
+                || "XMLHttpRequest".equalsIgnoreCase(xRequestedWith)) {
 
-        // } else {
-        // ModelAndView modelAndView = new ModelAndView();
-        // modelAndView.addObject("msg",
-        // e.getMessage()==null?e.toString():e.getMessage());
-        // modelAndView.addObject("url", req.getRequestURL());
-        // modelAndView.addObject("stackTrace", e.getStackTrace());
-        // modelAndView.setViewName("error");
-        // return modelAndView;
-        // }
+            Map<String, String> map = new HashMap<>();
+            map.put(msg, e.getMessage() == null ? e.toString() : e.getMessage());
+            return ResponseMesg.errorMsg(status, map);
+
+        } else {
+            ModelAndView modelAndView = new ModelAndView();
+            modelAndView.addObject("msg",e.getMessage()==null?e.toString():e.getMessage());
+            modelAndView.addObject("url", req.getRequestURL());
+            modelAndView.addObject("stackTrace", e.getStackTrace());
+            modelAndView.addObject("msgName",msg);
+            modelAndView.setViewName("error");
+            return modelAndView;
+        }
     }
 }
