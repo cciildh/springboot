@@ -2,6 +2,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "CodeLens (Launch) - aaa",
+            "request": "launch",
+            "mainClass": "com.ldh.aaa",
+            "projectName": "springboot-redis"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - app",
+            "request": "launch",
+            "mainClass": "com.ldh.app",
+            "projectName": "springboot-redis"
+        },
+        {
+            "type": "java",
             "name": "CodeLens (Launch) - app",
             "request": "launch",
             "mainClass": "com.example.app",
