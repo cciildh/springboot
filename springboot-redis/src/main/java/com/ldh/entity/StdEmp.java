@@ -12,8 +12,8 @@ import org.hibernate.validator.constraints.Range;
 /**
  * StdEmp
  */
-@Entity
-@Table(name="std_emp")
+@Entity//JPA
+@Table(name="std_emp")//JPA
 public class StdEmp {
 
     @Id

@@ -24,4 +24,38 @@ public class stdempController {
     public List<StdEmp> getListEmp() {
         return stdEmpServiceimpl.listEmp();
     }
+
+    @RequestMapping("/findByName")
+    @ResponseBody
+    public List<StdEmp> findByName(String name) {
+        List<StdEmp> list = stdEmpServiceimpl.findByName(name);
+        return list;
+    }
+
+    @RequestMapping("/findByIdAndName")
+    @ResponseBody
+    public List<StdEmp> findByIdAndName(String name, Integer age) {
+        List<StdEmp> list = stdEmpServiceimpl.findByNameAndAge(name, age);
+        return list;
+    }
+
+    @RequestMapping("/queryByName")
+    @ResponseBody
+    public List<StdEmp> queryByName(String name) {
+        List<StdEmp> emps = stdEmpServiceimpl.queryByName(name);
+        return emps;
+    }
+
+    @RequestMapping("/updateById")
+    @ResponseBody
+    public void updateById(String name, Integer id) {
+        stdEmpServiceimpl.updateEmpNameById(name, id);
+    }
+
+    @RequestMapping("/queryAllOrderbyage")
+    @ResponseBody
+    public List<StdEmp> queryAllOrderbyage() {
+        return stdEmpServiceimpl.queryAllOrderbyage();
+    }
+
 }

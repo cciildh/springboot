@@ -53,11 +53,11 @@ public class serviceTest {
 
         System.out.println(emp);
 
-    }
+    } 
 
     @Test
     public void findByName() {
-        List<StdEmp> list = stdEmpRepository.findByName("李道华");
+        List<StdEmp> list = stdEmpRepository.findByName("李道华1");
         System.out.println(list.toString());
     }
 
