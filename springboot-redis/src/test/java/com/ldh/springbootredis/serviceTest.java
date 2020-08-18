@@ -1,5 +1,6 @@
 package com.ldh.springbootredis;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -37,7 +38,7 @@ public class serviceTest {
         StdEmp emp = new StdEmp();
         emp.setAddress("湖北广水");
         emp.setAge(19);
-        emp.setId(10000);
+        emp.setId( BigDecimal.valueOf(10000) );
         emp.setName("李道华");
         emp.setPhone("0722-873367679");
         emp.setSexname("男");

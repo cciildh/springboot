@@ -1,8 +1,17 @@
 package com.ldh.entity;
 
+import java.math.BigDecimal;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotEmpty;
@@ -12,14 +21,14 @@ import org.hibernate.validator.constraints.Range;
 /**
  * StdEmp
  */
-@Entity//JPA
-@Table(name="std_emp")//JPA
+@Entity // JPA
+@Table(name = "std_emp") // JPA
 public class StdEmp {
 
     @Id
-    private Integer id;
+    private BigDecimal id;
     @NotBlank(message = "姓名不能为空！")
-    @Column(name="name")
+    @Column(name = "name")
     private String name;
     @Range(min = 1, max = 130, message = "年龄超出范围！") // 被注释的元素必须在合适的范围内
     private Integer age;
@@ -33,14 +42,14 @@ public class StdEmp {
     /**
      * @return the id
      */
-    public Integer getId() {
+    public BigDecimal getId() {
         return id;
     }
 
     /**
      * @param id the id to set
      */
-    public void setId(Integer id) {
+    public void setId(BigDecimal id) {
         this.id = id;
     }
 
@@ -114,6 +123,7 @@ public class StdEmp {
         this.phone = phone;
     }
 
+   
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
@@ -129,5 +139,7 @@ public class StdEmp {
         sb.append("]");
         return sb.toString();
     }
+
+
 
 }

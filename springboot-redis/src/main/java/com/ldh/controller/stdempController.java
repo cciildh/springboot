@@ -1,5 +1,6 @@
 package com.ldh.controller;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.ldh.entity.StdEmp;
@@ -48,7 +49,7 @@ public class stdempController {
 
     @RequestMapping("/updateById")
     @ResponseBody
-    public void updateById(String name, Integer id) {
+    public void updateById(String name, BigDecimal id) {
         stdEmpServiceimpl.updateEmpNameById(name, id);
     }
 
@@ -56,6 +57,12 @@ public class stdempController {
     @ResponseBody
     public List<StdEmp> queryAllOrderbyage() {
         return stdEmpServiceimpl.queryAllOrderbyage();
+    }
+
+    @RequestMapping("/queryJonAll")
+    @ResponseBody
+    public List<Object> queryJonAll() {
+        return stdEmpServiceimpl.queryJonAll();
     }
 
 }

@@ -1,5 +1,6 @@
 package com.ldh.dao;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import com.ldh.entity.StdEmp;
@@ -26,6 +27,11 @@ public interface StdEmpRepository extends JpaRepository<StdEmp, Integer>{
     // update
     @Query(value = "update std_emp set name = ? where id= ?", nativeQuery = true)
     @Modifying
-    void updateEmpNameById(String name, Integer id);
+    void updateEmpNameById(String name, BigDecimal id);
+
+
+    //关联查询
+    @Query(value="select a.id,name,age,sexName,address,b.payed_id,b.years,b.amount from std_emp a inner join EMP_PAYED b on a.id=b.id" , nativeQuery = true)
+    List<Object> queryJonAll();
  
 }

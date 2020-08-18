@@ -1,5 +1,6 @@
 package com.ldh.service.impl;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -44,7 +45,7 @@ public class StdEmpServiceimpl implements StdEmpService {
 
     @Override
     @Transactional
-    public void updateEmpNameById(String name, Integer id) {
+    public void updateEmpNameById(String name, BigDecimal id) {
         stdEmpRepository.updateEmpNameById(name, id);
     }
 
@@ -54,6 +55,11 @@ public class StdEmpServiceimpl implements StdEmpService {
     @Override
     public List<StdEmp> queryAllOrderbyage() {
         return stdEmpRepository.findAll(Sort.by(new Order(Direction.DESC, "age")));
+    }
+
+    @Override
+    public List<Object> queryJonAll() {
+        return stdEmpRepository.queryJonAll();
     }
 
     

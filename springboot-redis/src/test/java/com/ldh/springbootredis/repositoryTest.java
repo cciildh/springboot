@@ -1,5 +1,6 @@
 package com.ldh.springbootredis;
 
+import java.math.BigDecimal;
 import java.util.List;
 
 import javax.transaction.Transactional;
@@ -37,7 +38,7 @@ public class repositoryTest {
     @Transactional
     @Rollback(false)
     public void updateById() {
-        stdEmpRepository.updateEmpNameById("李道华1", 10000);
+        stdEmpRepository.updateEmpNameById("李道华1", BigDecimal.valueOf(10000));
     }
 
     // 排序
