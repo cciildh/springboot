@@ -25,3 +25,11 @@ spring.redis.cluster.nodes=192.168.205.178:7001,192.168.205.178:7002,192.168.205
 ## 连接超时时间（毫秒） 
 spring.redis.timeout=60000
 
+#自定义属性
+cciiname=bhq
+#配置变量的引用
+mesg=ldh ${cciiname}
+
+# 本地调试打包后的
+# 1、cmd  进入项目打包后的jar所在目录
+# 2、java -jar spring-redis-0.0.1-sh.. jar  --spring.profiles.active={profile}  #profile为application.properties
