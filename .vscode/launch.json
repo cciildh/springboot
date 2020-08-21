@@ -1,12 +1,24 @@
 {
     "configurations": [
-
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DemoApplication",
+            "request": "launch",
+            "mainClass": "com.ldh.DemoApplication",
+            "projectName": "springcloud-product"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DemoApplication",
+            "request": "launch",
+            "mainClass": "com.ldh.springcloudproduct.DemoApplication"
+        },
         {
             "type": "java",
             "name": "CodeLens (Launch) - EurekaApplication",
             "request": "launch",
             "mainClass": "com.ldh.EurekaApplication",
-            "projectName": "springcloud-eureka",
+            "projectName": "springcloud-eureka"
         },
         {
             "type": "java",
