@@ -1,5 +1,13 @@
 {
     "configurations": [
+
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - EurekaApplication",
+            "request": "launch",
+            "mainClass": "com.ldh.EurekaApplication",
+            "projectName": "springcloud-eureka",
+        },
         {
             "type": "java",
             "name": "CodeLens (Launch) - aaa",
