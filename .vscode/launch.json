@@ -4,6 +4,13 @@
             "type": "java",
             "name": "CodeLens (Launch) - DemoApplication",
             "request": "launch",
+            "mainClass": "com.example.rabbitmqdirectconsumer.DemoApplication",
+            "projectName": "rabbitmq-direct-consumer"
+        },
+        {
+            "type": "java",
+            "name": "CodeLens (Launch) - DemoApplication",
+            "request": "launch",
             "mainClass": "com.ldh.springcloudoder.DemoApplication"
         },
         {
